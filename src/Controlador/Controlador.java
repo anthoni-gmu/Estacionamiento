@@ -13,39 +13,41 @@ public class Controlador implements ActionListener {
     LoginDAO dao = new LoginDAO();
     LoginVO vo = new LoginVO();
     Ingresar login = new Ingresar();
-    Inicio  in= new Inicio();
-    
+    Inicio in = new Inicio();
 
     public Controlador(Ingresar i) {
         this.login = i;
         this.login.btnIngresar.addActionListener(this);
         this.login.btnClose.addActionListener(this);
         
-        
-        
+
     }
-
-   
-    
-    
-
-    
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login.btnIngresar) {
             validar();
-            in.setVisible(true);
-            login.dispose();
+
         }
-        if (e.getSource() == login.btnClose ) {
+        if (e.getSource() == login.btnClose) {
             login.dispose();
+            System.out.println("cerrar");
         }
-        
-        
+
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public void validar() {
         String usuario = login.txtName.getText();
         String clave = login.txtPass.getText();
@@ -55,6 +57,10 @@ public class Controlador implements ActionListener {
             vo = dao.ValidadUsuario(usuario, clave);
             if (vo.getName() != null && vo.getPass() != null) {
 //                JOptionPane.showMessageDialog(this, "Bienvenido");
+                Inicio in=new Inicio();
+                ControladorInico ct=new ControladorInico(in);
+      
+                in.setVisible(true);
                 login.dispose();
 
             } else {
@@ -63,7 +69,5 @@ public class Controlador implements ActionListener {
             }
         }
     }
-    
-    
 
 }
