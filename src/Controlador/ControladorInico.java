@@ -32,6 +32,7 @@ public class ControladorInico implements ActionListener {
         }
 
         if (e.getSource() == in.btnEspacio1)  {
+            
             Agregar agg=new Agregar();
             Cagregar ct=new Cagregar(agg);
             agg.setVisible(true);
